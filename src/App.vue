@@ -1,31 +1,17 @@
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue";
-import TheWelcome from "./components/TheWelcome.vue";
+import GameBoard from "./components/GameBoard.vue";
+import CardView from "./components/CardView.vue";
 </script>
 
 <template>
-  <div id="app">
-    <header>
-      <img
-        alt="Vue logo"
-        class="logo"
-        src="./assets/logo.svg"
-        width="125"
-        height="125"
-      />
-
-      <div class="wrapper">
-        <HelloWorld msg="I am learning Vue!" />
-      </div>
-    </header>
-
+  <!-- <div id="app"> -->
     <main>
-      <TheWelcome />
+      <GameBoard />
     </main>
   </div>
 </template>
 
-<style scoped>
+<!-- <style scoped>
 header {
   line-height: 1.5;
 }
@@ -52,4 +38,4 @@ header {
     flex-wrap: wrap;
   }
 }
-</style>
+</style> -->
