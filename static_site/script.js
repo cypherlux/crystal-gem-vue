@@ -29,7 +29,7 @@ function matchCards(img1, img2) {
             console.log('YOU WIN :D');
             setTimeout(function(){
                 alert("You win!!"); 
-           }, 1000);
+    }, 1000);
             return;
         }
         cardOne.removeEventListener("click", flipCard);
