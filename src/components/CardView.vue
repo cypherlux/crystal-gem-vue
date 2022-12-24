@@ -7,7 +7,7 @@
             },
             imageUrl: {
                 type: String,
-                default: `../static_site/images/que_icon.svg`,
+                default: `./images/que_icon.svg`,
             },
             imageAltText: {
                 type: String,

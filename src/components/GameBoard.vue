@@ -30,47 +30,49 @@
                 });
             },
             flipCard(evt) {
-                const clickedCard = evt.target; 
+                const clickedCard = evt.target;
+                if (clickedCard.classList.contains("matched")) return;
                 if (this.cardOne !== clickedCard && !this.disableDeck) { 
                     clickedCard.classList.add("flip"); 
                     if (!this.cardOne) {
-                        return (this.cardOne = clickedCard);
+                        return (this.cardOne = clickedCard); 
                     }
                     this.cardTwo = clickedCard; 
                     this.disableDeck = true; 
+
                     let cardOneImg = this.cardOne.querySelector(".back-view img").src; 
                     let cardTwoImg = this.cardTwo.querySelector(".back-view img").src; 
-                    matchCards(cardOneImg, cardTwoImg);
+                    this.matchCards(cardOneImg, cardTwoImg); 
                 }
             },
             matchCards(img1, img2) {
-                if (img1 === img2) {
-                    matchedPairs++;
-                    if (matchedPairs == 8) {
-                        console.log('YOU WIN :D');
-                        setTimeout(function(){
-                            alert("You win!!"); 
-                }, 1000);
-                        return;
-                    }
-                    cardOne.removeEventListener("click", flipCard);
-                    cardTwo.removeEventListener("click", flipCard);
-                    cardOne = cardTwo = "";
-                    disableDeck = false;
+            if (img1 === img2) {
+                this.matchedPairs++; 
+                if (this.matchedPairs == 8) {
+                    console.log(`YOU WIN!`);
                     return;
                 }
-                setTimeout(() => {
-                    cardOne.classList.add("shake");
-                    cardTwo.classList.add("shake");
-                }, 400);
-                setTimeout(() => {
-                    cardOne.classList.remove("shake", "flip");
-                    cardTwo.classList.remove("shake", "flip");
-                    cardOne = cardTwo = "";
-                    disableDeck = false;
-                    return;
-                }, 1200);
+                this.cardOne.classList.add("matched"); 
+                this.cardTwo.classList.add("matched"); 
+                this.cardOne = ""; 
+                this.cardTwo = "";
+                this.disableDeck = false;
+                return;
             }
+            setTimeout(() => {
+                this.cardOne.classList.add("shake");
+                this.cardTwo.classList.add("shake");
+            }, 400);
+
+            setTimeout(() => {
+                this.cardOne.classList.remove("shake", "flip");
+                this.cardTwo.classList.remove("shake", "flip");
+                this.cardOne = "";
+                this.cardTwo = ""; 
+                this.disableDeck = false;
+                return;
+            }, 1200);
+            },
         },
     };
 </script>
